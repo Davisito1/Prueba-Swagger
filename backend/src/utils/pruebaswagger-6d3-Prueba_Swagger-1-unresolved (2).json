@@ -1,0 +1,1561 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1",
+    "title" : "Swagger_evaluacion",
+    "description" : "Esto es una api para una evaluacion"
+  },
+  "paths" : {
+    "/api/categories" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Categories" ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-categories",
+        "description" : "Endpoint para obtener las categorías disponibles"
+      },
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Categories" ],
+        "responses" : {
+          "201" : {
+            "description" : "Categoría creada"
+          },
+          "400" : {
+            "description" : "El nombre de la categoría es obligatorio"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-categories",
+        "description" : "Endpoint para crear una nueva categoría",
+        "requestBody" : {
+          "description" : "{\n    name,\n    description,\n    icon\n}",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Category"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categories/:id" : {
+      "put" : {
+        "summary" : "Your PUT endpoint",
+        "tags" : [ "Categories" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "put-api-categories-:id",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ],
+        "description" : "Endpoint para actualizar una categoría existente por su ID",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Category"
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Your DELETE endpoint",
+        "tags" : [ "Categories" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "delete-api-categories-:id",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ],
+        "description" : "Endpoint para eliminar una categoría existente por su ID"
+      }
+    },
+    "/api/products" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-products",
+        "description" : "Endpoint para obtener los productos segun el término de busqueda",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "{\n    search\n}",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "search" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "409" : {
+            "description" : "Conflict"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-products",
+        "description" : "Endpoint para registrar un nuevo producto",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/products/allProducts" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-products-allProducts",
+        "description" : "Endpoint para obtener todos los productos"
+      }
+    },
+    "/api/products/barcode/:barcode" : {
+      "put" : {
+        "summary" : "Your PUT endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "put-api-products-barcode-:barcode",
+        "description" : "Endpoint para actualizar un producto por su código de barras",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "barcode"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Your DELETE endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "delete-api-products-barcode-:barcode",
+        "description" : "Endpoint para elminar un producto por su código de barras",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "barcode"
+        } ]
+      }
+    },
+    "/api/products/:productId/variant-stock" : {
+      "put" : {
+        "summary" : "Your PUT endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "put-:productId-variant-stock",
+        "description" : "Endpoint para actualizar el stock de una variante ",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/api/products/:id" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-products-:id",
+        "description" : "Endpoint para obtener un producto por su ID",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ]
+      },
+      "put" : {
+        "summary" : "Your PUT endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "409" : {
+            "description" : "Conflict"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "put-api-products-:id",
+        "description" : "Endpoint para actualizar un producto por su ID",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Product"
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Your DELETE endpoint",
+        "tags" : [ "Products" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "delete-api-products-:id",
+        "description" : "Endpoint para eliminar un producto existente por su ID",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ]
+      }
+    },
+    "/api/auth/register/request-code" : {
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Auth" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-auth-register-request-code",
+        "description" : "Endpoint para obtener el codigo de verificación de regitro de usuario",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/register/verify" : {
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Auth" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-auth-register-verify",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string"
+                  },
+                  "code" : {
+                    "type" : "string"
+                  },
+                  "password" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description" : "Endpoint para verificar el código de verificación y registrar el usuario"
+      }
+    },
+    "/api/auth/login" : {
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Auth" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-auth-login",
+        "description" : "Endpoint para iniciar sesión",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string"
+                  },
+                  "password" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/password-reset/request" : {
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Auth" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-auth-password-reset-request",
+        "description" : "Endpoint para recuperación de contraseña",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/password-reset/verify" : {
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Auth" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-auth-password-reset-verify",
+        "description" : "Endpoint para verificar el código de recuperacion y luego cambiar la contraseña",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string"
+                  },
+                  "code" : {
+                    "type" : "string"
+                  },
+                  "newPassword" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/me" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Auth" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-auth-me",
+        "description" : "Endpoint para obtener el usuario de la persona que inicia sesión"
+      }
+    },
+    "/api/orders/" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Orders" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-orders",
+        "description" : "Endpoint para obtener todas las ordenes"
+      },
+      "post" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Orders" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "404" : {
+            "description" : "Carrito no encontrado"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-orders",
+        "description" : "Endpoint para registrar una nueva orden",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Order"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/orders/{id}" : {
+      "parameters" : [ {
+        "schema" : {
+          "type" : "string"
+        },
+        "name" : "id",
+        "in" : "path",
+        "required" : true
+      } ],
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Orders" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-orders-id",
+        "description" : "Endpoint para obtener una orden por su ID",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ]
+      },
+      "put" : {
+        "summary" : "Your PUT endpoint",
+        "tags" : [ "Orders" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "put-api-orders-id",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ],
+        "description" : "Endpoint para actualizar una orden por su ID",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Order"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/wishlist" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Users" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-users-wishlist",
+        "description" : "Endpoint para obtener la lista de deseos del usuario"
+      },
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Users" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-users-wishlist",
+        "description" : "Endpoint para agregar o eliminar un producto en la lista de deseos",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "productId" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/profile" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Users" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-categories-profile",
+        "description" : "Endpoint para obtener el perfil completo de un usuario"
+      },
+      "put" : {
+        "summary" : "Your PUT endpoint",
+        "tags" : [ "Users" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "put-api-categories-profile",
+        "description" : "Endpoint para actualizar el perfil de un usuario"
+      },
+      "parameters" : [ ]
+    },
+    "/api/geocoding/nominatim" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : "-Geocoding",
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-geocoding-nominatim",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "lat" : {
+                    "type" : "string"
+                  },
+                  "lon" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description" : "Endpoint para hacer geocodificación inversa"
+      }
+    },
+    "/api/settings/{key}" : {
+      "parameters" : [ {
+        "schema" : {
+          "type" : "string"
+        },
+        "name" : "key",
+        "in" : "path",
+        "required" : true
+      }, {
+        "schema" : {
+          "type" : "string"
+        },
+        "name" : "key",
+        "in" : "path",
+        "required" : true
+      } ],
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Settings" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-settings-key",
+        "description" : "Endpoint para obtener una configuracion específica por su clave",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "key"
+        } ]
+      },
+      "put" : {
+        "summary" : "Your PUT endpoint",
+        "tags" : [ "Settings" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "put-api-settings-key",
+        "description" : "Endpoint para crear o actualizar una nueva configuración",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "key"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Settings"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/barcodes" : {
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Barcodes" ],
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-barcodes",
+        "description" : "Endpoint para crear un código de barras"
+      }
+    },
+    "/api/fonts" : {
+      "get" : {
+        "summary" : "Your GET endpoint",
+        "tags" : [ "Fonts" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "get-api-fonts",
+        "description" : "Endpoint para obtener fuentes"
+      },
+      "post" : {
+        "summary" : "Your POST endpoint",
+        "tags" : [ "Fonts" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "post-api-fonts",
+        "description" : "Endpoint para ingresar fuentes"
+      }
+    },
+    "/api/fonts/{id}" : {
+      "parameters" : [ {
+        "schema" : {
+          "type" : "string"
+        },
+        "name" : "id",
+        "in" : "path",
+        "required" : true
+      }, {
+        "schema" : {
+          "type" : "string"
+        },
+        "name" : "id",
+        "in" : "path",
+        "required" : true
+      } ],
+      "delete" : {
+        "summary" : "Your DELETE endpoint",
+        "tags" : [ "Fonts" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "operationId" : "delete-api-fonts-id",
+        "parameters" : [ {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "id"
+        } ],
+        "description" : "Endpoint para eliminar las fuentes"
+      }
+    }
+  },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/pruebaswagger-6d3/Prueba_Swagger/1"
+  } ],
+  "components" : {
+    "schemas" : {
+      "AnnouncementBar" : {
+        "title" : "AnnouncementBar",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "text" : {
+            "type" : "string"
+          },
+          "imageUrl" : {
+            "type" : "string"
+          },
+          "imagePublicId" : {
+            "type" : "string"
+          },
+          "active" : {
+            "type" : "boolean",
+            "default" : true
+          },
+          "backgroundColor" : {
+            "type" : "string",
+            "default" : "#DC2626"
+          },
+          "textColor" : {
+            "type" : "string",
+            "default" : "#FFFFFF"
+          },
+          "animation" : {
+            "enum" : [ "none", "marquee", "pulse", "fadeIn", "slideFromTop", "bounce ", "wobble", "heartbet", "blink", "shake", "snake", "swing", "rubberBand", "flash", "jello" ]
+          },
+          "decoration" : {
+            "enum" : [ "none", "christmas", "halloween", "valentines", "mothers_day", "fathers_day", "black_week", "easter", "new_year", "independence_sv", "birthday", "august_fest" ]
+          },
+          "height" : {
+            "type" : "integer",
+            "default" : 40
+          },
+          "fontSize" : {
+            "type" : "integer",
+            "default" : 13
+          }
+        }
+      },
+      "AnnouncementImage" : {
+        "title" : "AnnouncementImage",
+        "type" : "object",
+        "required" : [ "url", "public_id" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "url" : {
+            "type" : "string"
+          },
+          "public_id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Banner" : {
+        "title" : "Banner",
+        "type" : "object",
+        "required" : [ "type", "imageUrl", "images", "videoUrl", "videoDuration" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "type" : {
+            "enum" : [ "image", "video", "collage" ]
+          },
+          "imageUrl" : {
+            "type" : "string"
+          },
+          "images" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "videoUrl" : {
+            "type" : "string"
+          },
+          "videoDuration" : {
+            "type" : "number"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "subtitle" : {
+            "type" : "string"
+          },
+          "link" : {
+            "type" : "string"
+          },
+          "active" : {
+            "type" : "boolean",
+            "default" : true
+          },
+          "order" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "CartItem" : {
+        "title" : "CartItem",
+        "type" : "object",
+        "required" : [ "product", "quantity", "price" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "product" : {
+            "type" : "string"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "default" : 1,
+            "minimum" : 1
+          },
+          "size" : {
+            "type" : "string"
+          },
+          "color" : {
+            "type" : "string"
+          },
+          "price" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Cart" : {
+        "title" : "Cart",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "user" : {
+            "type" : "string"
+          },
+          "sessionId" : {
+            "type" : "string"
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CartItem"
+            }
+          },
+          "total" : {
+            "type" : "number",
+            "default" : 0
+          }
+        }
+      },
+      "Category" : {
+        "title" : "Category",
+        "type" : "object",
+        "required" : [ "name", "subcategories" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "siug" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "subcategories" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "string"
+              }
+            }
+          },
+          "featured" : {
+            "type" : "boolean",
+            "default" : false
+          },
+          "order" : {
+            "type" : "integer",
+            "default" : 0
+          },
+          "icon" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ClosureDate" : {
+        "title" : "ClosureDate",
+        "type" : "object",
+        "required" : [ "date" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "reason" : {
+            "type" : "string",
+            "default" : ""
+          },
+          "hasSpecialHours" : {
+            "type" : "boolean",
+            "default" : false
+          },
+          "specialHours" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "Counter" : {
+        "title" : "Counter",
+        "type" : "object",
+        "required" : [ "name", "value" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "number",
+            "default" : 0
+          }
+        }
+      },
+      "CustomFont" : {
+        "title" : "CustomFont",
+        "type" : "object",
+        "required" : [ "name", "url", "public_id", "format", "originalName" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "url" : {
+            "type" : "string"
+          },
+          "public_id" : {
+            "type" : "string"
+          },
+          "format" : {
+            "enum" : [ "ttf", "otf", "woff", "woff2" ]
+          },
+          "originalName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Notification" : {
+        "title" : "Notification",
+        "type" : "object",
+        "required" : [ "type", "message" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "type" : {
+            "enum" : [ "low_stock", "pickup_ready", "payment_failed", "info", "system_alert" ]
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "metadata" : {
+            "type" : "object"
+          },
+          "isRead" : {
+            "type" : "boolean",
+            "default" : false
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date",
+            "default" : "Date.now"
+          }
+        }
+      },
+      "Order" : {
+        "title" : "Order",
+        "type" : "object",
+        "required" : [ "orderNumber", "customer", "items", "subtotal", "shippingCost", "total" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "orderNumber" : {
+            "type" : "string"
+          },
+          "customer" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          },
+          "idCart" : {
+            "type" : "string"
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : { }
+            }
+          },
+          "subtotal" : {
+            "type" : "number"
+          },
+          "shippingCost" : {
+            "type" : "number",
+            "default" : 0
+          },
+          "total" : {
+            "type" : "number"
+          },
+          "status" : {
+            "enum" : [ "pending", "proccesing", "shipped", "delivered", "cancelled" ]
+          },
+          "user" : {
+            "$ref" : "#/components/schemas/User"
+          },
+          "deliveryMethond" : {
+            "enum" : [ "delivery", "pickup", "pos" ]
+          },
+          "pickupDetails" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "Product" : {
+        "title" : "Product",
+        "type" : "object",
+        "required" : [ "name", "description", "price", "images", "category" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "price" : {
+            "type" : "number",
+            "default" : 0
+          },
+          "originalPrice" : {
+            "type" : "number",
+            "default" : 0
+          },
+          "images" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "category" : {
+            "$ref" : "#/components/schemas/Category"
+          },
+          "categorySlug" : {
+            "type" : "string"
+          },
+          "subcategory" : {
+            "type" : "string"
+          },
+          "sizes" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "colors" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "stock" : {
+            "type" : "integer",
+            "default" : 0,
+            "minimum" : 0
+          },
+          "hasVariants" : {
+            "type" : "boolean",
+            "default" : false
+          },
+          "variants" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "string"
+              }
+            }
+          },
+          "brand" : {
+            "type" : "string"
+          },
+          "rating" : {
+            "type" : "number",
+            "minimum" : 0,
+            "maximum" : 5,
+            "default" : 0
+          },
+          "proveedor" : {
+            "type" : "string"
+          },
+          "importe" : {
+            "type" : "number",
+            "minimum" : 0
+          },
+          "taxes" : {
+            "type" : "number",
+            "minimum" : 0,
+            "default" : 0
+          },
+          "impuestosImportacion" : {
+            "type" : "number",
+            "default" : 0,
+            "minimum" : 0
+          },
+          "flete" : {
+            "type" : "number",
+            "default" : 0,
+            "minimum" : 0
+          },
+          "costo" : {
+            "type" : "number",
+            "minimum" : 0
+          },
+          "paraTienda" : {
+            "type" : "boolean",
+            "default" : true
+          },
+          "location" : {
+            "type" : "string"
+          },
+          "barcode" : {
+            "type" : "string"
+          },
+          "stockZeroAt" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }
+      },
+      "Settings" : {
+        "title" : "Settings",
+        "type" : "object",
+        "required" : [ "key", "value" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "key" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "StoreHours" : {
+        "title" : "StoreHours",
+        "type" : "object",
+        "required" : [ "day" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "day" : {
+            "type" : "integer",
+            "minimum" : 0,
+            "maximum" : 6
+          },
+          "openTime" : {
+            "type" : "string",
+            "format" : "time",
+            "default" : "07:00"
+          },
+          "closeTime" : {
+            "type" : "string",
+            "format" : "time",
+            "default" : "19:00"
+          },
+          "closed" : {
+            "type" : "boolean",
+            "default" : false
+          }
+        }
+      },
+      "User" : {
+        "title" : "User",
+        "type" : "object",
+        "required" : [ "email", "password" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "firstName" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          },
+          "phone" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          },
+          "role" : {
+            "enum" : [ "user", "admin", "seller" ]
+          },
+          "gender" : {
+            "enum" : [ "masculino", "femenino", "prefiero no decirlo", "otro" ]
+          },
+          "birthDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "wishlist" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Product"
+            }
+          },
+          "isVerified" : {
+            "type" : "boolean",
+            "default" : false
+          },
+          "acceptedTerms" : {
+            "type" : "boolean",
+            "default" : false
+          },
+          "verificationCode" : {
+            "type" : "string"
+          },
+          "verificationCodeExpires" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        },
+        "description" : ""
+      }
+    }
+  }
+}

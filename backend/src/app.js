@@ -19,8 +19,16 @@ import closureDateRoutes from "./routes/closureDateRoutes.js";
 import fontRoutes from "./routes/fontRoutes.js";
 import cartRoutes from "./routes/cart.js";
 import userRoutes from "./routes/users.js";
+import swaggerUI from "swagger-ui-express"
+import swaggerDocument from "./utils/pruebaswagger-6d3-Prueba_Swagger-1-unresolved (2).json" with {type: "json"}
 
 const app = express();
+
+app.use(
+  "/api-docs",
+  swaggerUI.serve,
+  swaggerUI.setup(swaggerDocument)
+)
 
 app.use(
   cors({
